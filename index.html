@@ -1,30 +1,24 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портфолио — Редактируемый сайт</title>
+    <title>Portfolio | High Fashion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0f0f15;
-            --surface: #1a1a25;
-            --surface2: #222230;
-            --text: #e0e0e0;
-            --text2: #a0a0b8;
-            --accent: #6c5ce7;
-            --accent2: #a78bfa;
-            --card-bg: #1a1a25;
-            --card-border: #2a2a3a;
-            --nav-bg: rgba(15, 15, 21, 0.85);
-            --radius: 16px;
-            --radius-sm: 10px;
-            --font: 'Segoe UI', system-ui, sans-serif;
-            --font-heading: 'Segoe UI', system-ui, sans-serif;
-            --shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            --bg: #ffffff;
+            --surface: #ffffff;
+            --text: #2c2c2c;
+            --text-secondary: #7a7a7a;
+            --accent: #dca8b4;
+            --accent-soft: #f2e5e9;
+            --border: #e5e5e5;
+            --radius: 2px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --hero-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f15 100%);
-            --hero-overlay: radial-gradient(ellipse at 30% 20%, rgba(108, 92, 231, 0.15) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 60%, rgba(167, 139, 250, 0.08) 0%, transparent 60%);
         }
 
         * {
@@ -33,1021 +27,790 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: var(--font);
-            background: var(--bg);
+            font-family: var(--font-sans);
+            background-color: var(--bg);
             color: var(--text);
-            line-height: 1.6;
-            transition: background var(--transition), color var(--transition);
-            min-height: 100vh;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.4s, color 0.4s;
+            letter-spacing: 0.02em;
         }
 
-        /* Navbar */
-        .navbar {
-            position: fixed;
+        /* Navigation – minimal, high fashion */
+        nav {
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: var(--nav-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--card-border);
-            transition: all var(--transition);
-            padding: 0 24px;
-        }
-        .navbar .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2.5rem;
+            height: 72px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 64px;
+            transition: all 0.4s;
         }
-        .nav-logo {
-            font-family: var(--font-heading);
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+        .nav-name {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 500;
             font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent2);
-            letter-spacing: -0.5px;
+            letter-spacing: 0.04em;
+            color: var(--text);
+            cursor: pointer;
             transition: color var(--transition);
-            text-decoration: none;
+            white-space: nowrap;
+        }
+        .nav-name:hover {
+            color: var(--accent);
         }
         .nav-links {
             display: flex;
-            gap: 8px;
-            align-items: center;
-            list-style: none;
+            gap: 0.5rem;
             flex-wrap: wrap;
         }
-        .nav-links a {
-            color: var(--text2);
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 25px;
+        .nav-links button {
+            background: transparent;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.85rem;
             font-weight: 500;
-            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            color: var(--text-secondary);
             transition: all var(--transition);
-            letter-spacing: 0.3px;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            font-family: var(--font-sans);
         }
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.06);
+        .nav-links button:hover {
+            color: var(--text);
+            border-bottom-color: var(--accent);
         }
-        .btn-edit-toggle {
-            background: var(--accent);
-            color: #fff !important;
+        .nav-links button.active {
+            color: var(--text);
+            border-bottom-color: var(--accent);
+            font-weight: 600;
+        }
+        .settings-icon {
+            background: none;
             border: none;
             cursor: pointer;
-            font-weight: 600 !important;
-            padding: 8px 18px !important;
-            border-radius: 25px !important;
-            font-size: 0.85rem !important;
+            color: var(--text-secondary);
+            padding: 0.5rem;
+            border-radius: 50%;
             transition: all var(--transition);
-            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
         }
-        .btn-edit-toggle:hover {
-            background: var(--accent2) !important;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.3);
-        }
-        .btn-edit-toggle.active {
-            background: #e74c3c !important;
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0%,
-            100% {
-                box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 0 10px rgba(231, 76, 60, 0);
-            }
+        .settings-icon:hover {
+            color: var(--accent);
+            background: var(--accent-soft);
         }
 
-        /* Sections */
-        .section {
-            padding: 100px 24px 60px;
-        }
-        .container {
-            max-width: 1100px;
+        /* Main content */
+        main {
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 2rem 2.5rem 4rem;
+            animation: fade 0.5s ease;
         }
-        .section-title {
-            font-family: var(--font-heading);
-            font-size: 2.4rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 16px;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, var(--accent2), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .section-subtitle {
-            text-align: center;
-            color: var(--text2);
-            margin-bottom: 48px;
-            font-size: 1.05rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
         }
 
-        /* Hero */
-        .hero {
-            min-height: 80vh;
+        /* Home page – signature name + gallery */
+        .home-signature {
+            text-align: center;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .home-signature h1 {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 400;
+            font-size: clamp(3.5rem, 8vw, 6rem);
+            letter-spacing: -0.02em;
+            color: var(--text);
+            line-height: 1.1;
+            margin-bottom: 0.3rem;
+            transition: color 0.4s;
+        }
+        .home-signature .sub {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+            color: var(--text-secondary);
+            font-weight: 400;
+            border-top: 1px solid var(--border);
+            padding-top: 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        /* Gallery grid – minimalist masonry style */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            background: #f9f9f9;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            background: var(--surface);
+            border: 1px solid var(--border);
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(44, 44, 44, 0.7);
+            backdrop-filter: blur(6px);
+            color: #fff;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            background: var(--hero-bg);
-            position: relative;
-            overflow: hidden;
+            opacity: 0;
+            transition: opacity 0.25s, background 0.2s;
+            z-index: 5;
+            line-height: 1;
+            font-weight: 300;
         }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--hero-overlay);
-            pointer-events: none;
+        .gallery-item:hover .delete-btn {
+            opacity: 1;
         }
-        .hero .container {
-            position: relative;
-            z-index: 1;
+        .delete-btn:hover {
+            background: #b56576;
         }
-        .hero-avatar {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--accent);
-            margin-bottom: 24px;
-            box-shadow: 0 0 40px rgba(108, 92, 231, 0.3);
+
+        .add-card {
+            aspect-ratio: 3/4;
+            border: 2px dashed var(--border);
+            border-radius: var(--radius);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
             transition: all var(--transition);
+            background: transparent;
+            color: var(--text-secondary);
+            gap: 0.4rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.8rem;
+            min-height: 220px;
+        }
+        .add-card:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(220, 168, 180, 0.04);
+        }
+        .add-card .plus {
+            font-size: 2.8rem;
+            font-weight: 200;
+            line-height: 1;
+        }
+
+        /* Modal overlay */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(4px);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeOverlay 0.2s ease;
+        }
+        @keyframes fadeOverlay {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .modal {
             background: var(--surface);
+            border-radius: 8px;
+            padding: 2.2rem;
+            width: 90%;
+            max-width: 480px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            border: 1px solid var(--border);
+            animation: modalSlide 0.3s ease;
         }
-        .hero h1 {
-            font-family: var(--font-heading);
-            font-size: 3.2rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 8px;
-            transition: color var(--transition);
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .hero .tagline {
-            font-size: 1.2rem;
-            color: var(--accent2);
+        .modal h3 {
+            font-family: var(--font-serif);
             font-weight: 500;
-            margin-bottom: 20px;
-            transition: color var(--transition);
+            font-size: 1.6rem;
+            letter-spacing: 0.02em;
+            margin-bottom: -0.2rem;
         }
-        .hero .bio {
-            max-width: 550px;
-            margin: 0 auto;
-            color: var(--text2);
-            font-size: 1rem;
-            transition: color var(--transition);
+        .modal input[type="text"],
+        .modal input[type="file"] {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.95rem;
+            background: #fdfdfd;
+            color: var(--text);
+            transition: border 0.2s;
+            font-family: var(--font-sans);
+        }
+        .modal input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .modal .divider {
+            display: flex;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .modal .divider::before,
+        .modal .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border);
+            margin: 0 0.7rem;
+        }
+        .btn-row {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: flex-end;
+            flex-wrap: wrap;
         }
         .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all var(--transition);
-            cursor: pointer;
+            padding: 0.7rem 1.6rem;
+            border-radius: 4px;
             border: none;
-            font-size: 0.95rem;
-            letter-spacing: 0.3px;
-            margin: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.25s;
+            font-family: var(--font-sans);
         }
         .btn-primary {
             background: var(--accent);
             color: #fff;
         }
         .btn-primary:hover {
-            background: var(--accent2);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.35);
+            background: #c98b9b;
+            box-shadow: 0 6px 16px rgba(220, 168, 180, 0.4);
         }
-        .btn-outline {
-            border: 2px solid var(--card-border);
-            color: var(--text);
+        .btn-secondary {
             background: transparent;
-        }
-        .btn-outline:hover {
-            border-color: var(--accent);
-            background: rgba(108, 92, 231, 0.08);
-        }
-
-        /* Projects Grid */
-        .filter-bar {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 36px;
-        }
-        .filter-btn {
-            padding: 8px 20px;
-            border-radius: 25px;
-            border: 1.5px solid var(--card-border);
-            background: transparent;
-            color: var(--text2);
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all var(--transition);
-            font-family: var(--font);
-        }
-        .filter-btn.active,
-        .filter-btn:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: #fff;
-        }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 24px;
-        }
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius);
-            overflow: hidden;
-            transition: all var(--transition);
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-        }
-        .project-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--accent);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
-        }
-        .project-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            background: var(--surface2);
-            transition: transform 0.5s;
-        }
-        .project-card:hover img {
-            transform: scale(1.04);
-        }
-        .project-card .card-body {
-            padding: 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .project-card .card-tag {
-            display: inline-block;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent2);
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        .project-card h3 {
-            font-family: var(--font-heading);
-            font-size: 1.25rem;
-            margin-bottom: 8px;
-            letter-spacing: -0.3px;
-        }
-        .project-card p {
-            color: var(--text2);
-            font-size: 0.9rem;
-            flex: 1;
-        }
-        .project-card .card-link {
-            margin-top: 14px;
-            color: var(--accent);
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color var(--transition);
-        }
-        .project-card .card-link:hover {
-            color: var(--accent2);
-        }
-
-        /* Contacts */
-        .contacts-list {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            font-size: 1rem;
-        }
-        .contacts-list a {
-            color: var(--accent2);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color var(--transition);
-            padding: 8px 16px;
-            border-radius: 25px;
-            background: var(--surface);
-        }
-        .contacts-list a:hover {
-            color: #fff;
-            background: var(--accent);
-        }
-        footer {
-            text-align: center;
-            padding: 32px;
-            color: var(--text2);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--card-border);
-            margin-top: 40px;
-        }
-
-        /* Admin Panel */
-        .admin-panel {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 420px;
-            max-width: 92vw;
-            height: 100vh;
-            background: var(--surface);
-            border-left: 1px solid var(--card-border);
-            z-index: 2000;
-            overflow-y: auto;
-            padding: 24px;
-            box-shadow: -8px 0 30px rgba(0, 0, 0, 0.6);
-            transform: translateX(100%);
-            transition: transform var(--transition);
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .admin-panel.open {
-            transform: translateX(0);
-        }
-        .admin-panel h2 {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            letter-spacing: -0.3px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .admin-panel label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text2);
-            display: block;
-            margin-bottom: 4px;
-        }
-        .admin-panel input,
-        .admin-panel textarea,
-        .admin-panel select {
-            width: 100%;
-            padding: 10px 14px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--card-border);
-            background: var(--surface2);
+            border: 1px solid var(--border);
             color: var(--text);
-            font-family: var(--font);
-            font-size: 0.9rem;
-            transition: all var(--transition);
-            resize: vertical;
         }
-        .admin-panel input:focus,
-        .admin-panel textarea:focus,
-        .admin-panel select:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15);
-        }
-        .admin-panel .color-row {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-        .admin-panel input[type="color"] {
-            width: 44px;
-            height: 38px;
-            padding: 2px;
-            cursor: pointer;
-            border-radius: 8px;
-            border: 1px solid var(--card-border);
-            background: var(--surface2);
-        }
-        .admin-panel button {
-            padding: 10px 18px;
-            border-radius: 25px;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all var(--transition);
-            font-family: var(--font);
-            letter-spacing: 0.3px;
-        }
-        .btn-save {
-            background: var(--accent);
-            color: #fff;
-        }
-        .btn-save:hover {
-            background: var(--accent2);
+        .btn-secondary:hover {
+            background: #f5f5f5;
         }
         .btn-danger {
-            background: #e74c3c;
-            color: #fff;
+            background: transparent;
+            border: 1px solid #c98b9b;
+            color: #b56576;
         }
         .btn-danger:hover {
-            background: #c0392b;
+            background: #f9f0f2;
         }
-        .btn-sm {
-            padding: 6px 14px;
-            font-size: 0.8rem;
-            border-radius: 20px;
-        }
-        .admin-section {
-            background: var(--surface2);
-            padding: 16px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--card-border);
-        }
-        .overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity var(--transition);
-        }
-        .overlay.show {
-            opacity: 1;
-            pointer-events: all;
-        }
-        .project-edit-item {
-            background: var(--surface);
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            border: 1px solid var(--card-border);
+
+        /* Settings specific */
+        .color-options {
             display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .flex-row {
-            display: flex;
-            gap: 8px;
+            gap: 1rem;
             flex-wrap: wrap;
+        }
+        .color-swatch {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .color-swatch.selected {
+            border-color: var(--text);
+            transform: scale(1.1);
+        }
+        .bg-options {
+            display: flex;
+            gap: 0.8rem;
+        }
+        .bg-option {
+            padding: 0.5rem 1.2rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            background: #fff;
+        }
+        .bg-option.selected {
+            border-color: var(--accent);
+            background: var(--accent-soft);
+            font-weight: 600;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
+            nav {
+                padding: 0 1.2rem;
+                height: auto;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                padding-bottom: 0.8rem;
             }
-            .section-title {
-                font-size: 1.8rem;
-            }
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            .nav-links a {
-                padding: 6px 10px;
-                font-size: 0.78rem;
-            }
-            .navbar .container {
-                height: 56px;
-            }
-            .admin-panel {
+            .nav-left {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
                 width: 100%;
-                max-width: 100%;
+            }
+            .nav-links {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            main {
+                padding: 1.5rem 1.2rem;
+            }
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 1rem;
             }
         }
     </style>
 </head>
 <body>
-
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container">
-            <a href="#" class="nav-logo" id="navLogo">Моё Портфолио</a>
-            <ul class="nav-links">
-                <li><a href="#hero" class="active">Главная</a></li>
-                <li><a href="#projects">Проекты</a></li>
-                <li><a href="#contacts">Контакты</a></li>
-                <li><button class="btn-edit-toggle" id="btnToggleAdmin" title="Редактировать сайт">✎ Редактор</button></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Overlay -->
-    <div class="overlay" id="overlay"></div>
-
-    <!-- Admin Panel -->
-    <div class="admin-panel" id="adminPanel">
-        <h2>
-            ⚙️ Панель управления
-            <button class="btn-sm btn-danger" id="btnCloseAdmin">✕ Закрыть</button>
-        </h2>
-        <p style="font-size:0.8rem;color:var(--text2);">Изменения сохраняются автоматически в браузере.</p>
-
-        <!-- Тема -->
-        <div class="admin-section">
-            <h3>🎨 Визуальная тема</h3>
-            <label>Цвет фона</label>
-            <div class="color-row"><input type="color" id="colorBg" value="#0f0f15"><span>--bg</span></div>
-            <label>Цвет карточек</label>
-            <div class="color-row"><input type="color" id="colorCardBg" value="#1a1a25"><span>--card-bg</span></div>
-            <label>Цвет текста</label>
-            <div class="color-row"><input type="color" id="colorText" value="#e0e0e0"><span>--text</span></div>
-            <label>Акцентный цвет</label>
-            <div class="color-row"><input type="color" id="colorAccent" value="#6c5ce7"><span>--accent</span></div>
-            <label>Шрифт заголовков</label>
-            <select id="fontHeading">
-                <option value="'Segoe UI', system-ui, sans-serif">Segoe UI (по умолчанию)</option>
-                <option value="'Inter', sans-serif">Inter</option>
-                <option value="'Playfair Display', serif">Playfair Display</option>
-                <option value="'Montserrat', sans-serif">Montserrat</option>
-                <option value="'Roboto Slab', serif">Roboto Slab</option>
-            </select>
-            <button class="btn-save" style="margin-top:10px;width:100%;" id="btnApplyTheme">💾 Применить тему</button>
-            <button class="btn-outline btn-sm" style="margin-top:6px;width:100%;" id="btnResetTheme">↺ Сбросить тему</button>
-        </div>
-
-        <!-- Профиль -->
-        <div class="admin-section">
-            <h3>👤 Профиль</h3>
-            <label>Имя / Заголовок</label>
-            <input type="text" id="adminName" placeholder="Иван Иванов">
-            <label>Слоган (tagline)</label>
-            <input type="text" id="adminTagline" placeholder="Дизайнер & Разработчик">
-            <label>Биография</label>
-            <textarea id="adminBio" rows="3" placeholder="Краткое описание..."></textarea>
-            <label>Аватар (URL)</label>
-            <input type="text" id="adminAvatar" placeholder="https://...">
-            <label>Название сайта (лого)</label>
-            <input type="text" id="adminSiteName" placeholder="Моё Портфолио">
-            <button class="btn-save" style="margin-top:8px;width:100%;" id="btnSaveProfile">💾 Сохранить профиль</button>
-        </div>
-
-        <!-- Проекты -->
-        <div class="admin-section">
-            <h3>📁 Проекты</h3>
-            <div id="adminProjectsList"></div>
-            <button class="btn-primary" style="width:100%;margin-top:8px;" id="btnAddProject">+ Добавить проект</button>
-        </div>
-
-        <!-- Контакты -->
-        <div class="admin-section">
-            <h3>📬 Контакты</h3>
-            <label>Email</label>
-            <input type="text" id="adminEmail" placeholder="hello@example.com">
-            <label>Telegram</label>
-            <input type="text" id="adminTelegram" placeholder="@username">
-            <label>GitHub</label>
-            <input type="text" id="adminGithub" placeholder="github.com/...">
-            <button class="btn-save" style="margin-top:8px;width:100%;" id="btnSaveContacts">💾 Сохранить контакты</button>
-        </div>
-        <button class="btn-danger" style="width:100%;" id="btnResetAll">🗑 Сбросить ВСЕ данные</button>
-    </div>
-
-    <!-- Hero Section -->
-    <section class="hero section" id="hero">
-        <div class="container">
-            <img class="hero-avatar" id="heroAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Crect fill='%232a2a3a' width='130' height='130' rx='65'/%3E%3Ctext fill='%23a0a0b8' x='65' y='72' text-anchor='middle' font-size='40'%3E👤%3C/text%3E%3C/svg%3E"
-            alt="Аватар">
-            <h1 id="heroName">Алексей Креативный</h1>
-            <p class="tagline" id="heroTagline">Графический дизайнер & Веб-разработчик</p>
-            <p class="bio" id="heroBio">Создаю визуальные истории и удобные интерфейсы. Люблю минимализм, чистый код и смелые идеи.</p>
-            <div style="margin-top:24px;">
-                <a href="#projects" class="btn btn-primary">Смотреть проекты</a>
-                <a href="#contacts" class="btn btn-outline">Связаться</a>
+    <nav>
+        <div class="nav-left">
+            <div class="nav-name" id="navBrandName">YOUR NAME</div>
+            <div class="nav-links">
+                <button class="nav-tab active" data-page="home">Home</button>
+                <button class="nav-tab" data-page="brands">Brands</button>
+                <button class="nav-tab" data-page="shows">Shows</button>
+                <button class="nav-tab" data-page="skincare">Skin Care</button>
             </div>
         </div>
-    </section>
+        <button class="settings-icon" id="settingsBtn" title="Customize">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+        </button>
+    </nav>
 
-    <!-- Projects Section -->
-    <section class="section" id="projects">
-        <div class="container">
-            <h2 class="section-title">Проекты</h2>
-            <p class="section-subtitle">Избранные работы, которые отражают мой стиль и подход.</p>
-            <div class="filter-bar" id="filterBar"></div>
-            <div class="projects-grid" id="projectsGrid"></div>
+    <main>
+        <!-- Home Page -->
+        <div id="page-home" class="page active">
+            <div class="home-signature">
+                <h1 id="displayName">YOUR NAME</h1>
+                <div class="sub">PORTFOLIO · HIGH FASHION</div>
+            </div>
+            <div class="gallery" id="gallery-home"></div>
+            <div class="add-card" id="addHomeImage">
+                <span class="plus">+</span>
+                <span>Add image</span>
+            </div>
         </div>
-    </section>
 
-    <!-- Contacts Section -->
-    <section class="section" id="contacts">
-        <div class="container">
-            <h2 class="section-title">Контакты</h2>
-            <p class="section-subtitle">Готов к сотрудничеству и новым проектам.</p>
-            <div class="contacts-list" id="contactsList"></div>
+        <!-- Brands Page -->
+        <div id="page-brands" class="page">
+            <div class="gallery" id="gallery-brands"></div>
+            <div class="add-card" id="addBrandsImage">
+                <span class="plus">+</span>
+                <span>Add image</span>
+            </div>
         </div>
-    </section>
 
-    <footer>
-        <p>© <span id="footerYear"></span> <span id="footerName">Моё Портфолио</span>. Все права защищены.</p>
-    </footer>
+        <!-- Shows Page -->
+        <div id="page-shows" class="page">
+            <div class="gallery" id="gallery-shows"></div>
+            <div class="add-card" id="addShowsImage">
+                <span class="plus">+</span>
+                <span>Add image</span>
+            </div>
+        </div>
+
+        <!-- Skin Care Page -->
+        <div id="page-skincare" class="page">
+            <div class="gallery" id="gallery-skincare"></div>
+            <div class="add-card" id="addSkincareImage">
+                <span class="plus">+</span>
+                <span>Add image</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Image Modal -->
+    <div class="modal-overlay" id="addImageModal" style="display: none;">
+        <div class="modal">
+            <h3>Add Image</h3>
+            <input type="text" id="imageUrlInput" placeholder="Paste image URL (https://...)">
+            <div class="divider">or</div>
+            <input type="file" id="imageFileInput" accept="image/*">
+            <div class="btn-row">
+                <button class="btn btn-secondary" id="cancelAddImage">Cancel</button>
+                <button class="btn btn-primary" id="confirmAddImage">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal" style="display: none;">
+        <div class="modal">
+            <h3>Customize</h3>
+            <label style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em;">Your Name</label>
+            <input type="text" id="settingsName" placeholder="Your name">
+            <label style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em;">Accent Color</label>
+            <div class="color-options" id="accentColors">
+                <div class="color-swatch" style="background:#dca8b4;" data-color="#dca8b4"></div>
+                <div class="color-swatch" style="background:#c49b9b;" data-color="#c49b9b"></div>
+                <div class="color-swatch" style="background:#d9c5b0;" data-color="#d9c5b0"></div>
+                <div class="color-swatch" style="background:#b0afaf;" data-color="#b0afaf"></div>
+                <div class="color-swatch" style="background:#e6b8c0;" data-color="#e6b8c0"></div>
+            </div>
+            <label style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em;">Background</label>
+            <div class="bg-options" id="bgOptions">
+                <span class="bg-option selected" data-bg="#ffffff">White</span>
+                <span class="bg-option" data-bg="#f9f6f2">Beige</span>
+            </div>
+            <div class="btn-row" style="justify-content: space-between;">
+                <button class="btn btn-danger" id="resetAllData">Reset All</button>
+                <div>
+                    <button class="btn btn-secondary" id="cancelSettings">Cancel</button>
+                    <button class="btn btn-primary" id="saveSettings">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         (function() {
-            // === DEFAULT DATA ===
-            const defaultData = {
-                theme: {
-                    bg: '#0f0f15',
-                    cardBg: '#1a1a25',
-                    text: '#e0e0e0',
-                    accent: '#6c5ce7',
-                    fontHeading: "'Segoe UI', system-ui, sans-serif"
-                },
-                profile: {
-                    name: 'Алексей Креативный',
-                    tagline: 'Графический дизайнер & Веб-разработчик',
-                    bio: 'Создаю визуальные истории и удобные интерфейсы. Люблю минимализм, чистый код и смелые идеи.',
-                    avatar: '',
-                    siteName: 'Моё Портфолио'
-                },
-                projects: [
-                    { id: 1, title: 'Брендинг для Coffee House',
-                        category: 'Дизайн', description: 'Полный ребрендинг: логотип, упаковка, меню.',
-                        image: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=600&h=400&fit=crop',
-                        link: '#' },
-                    { id: 2, title: 'Лендинг для стартапа', category: 'Веб',
-                        description: 'Одностраничный сайт с анимациями и формой захвата.',
-                        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
-                        link: '#' },
-                    { id: 3, title: 'Мобильное приложение', category: 'UI/UX',
-                        description: 'Прототип фитнес-трекера с геймификацией.',
-                        image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop',
-                        link: '#' },
-                    { id: 4, title: 'Фотопроект "Город"', category: 'Фото',
-                        description: 'Серия черно-белых снимков городской архитектуры.',
-                        image: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop',
-                        link: '#' },
-                ],
-                contacts: {
-                    email: 'alex@creative.ru',
-                    telegram: '@alexcreative',
-                    github: 'github.com/alexcreative'
+            // ----- STATE -----
+            const STORAGE_KEY = 'fashionPortfolio';
+            let state = {
+                name: 'YOUR NAME',
+                accent: '#dca8b4',
+                bg: '#ffffff',
+                images: {
+                    home: [],
+                    brands: [],
+                    shows: [],
+                    skincare: []
                 }
             };
 
-            // === LOAD / SAVE ===
-            function loadData() {
-                try {
-                    const raw = localStorage.getItem('portfolio_data');
-                    if (raw) return JSON.parse(raw);
-                } catch (e) {}
-                return JSON.parse(JSON.stringify(defaultData));
-            }
+            // ----- DOM ELEMENTS -----
+            const navBrand = document.getElementById('navBrandName');
+            const displayNameEl = document.getElementById('displayName');
+            const navTabs = document.querySelectorAll('.nav-tab');
+            const pages = {
+                home: document.getElementById('page-home'),
+                brands: document.getElementById('page-brands'),
+                shows: document.getElementById('page-shows'),
+                skincare: document.getElementById('page-skincare')
+            };
+            const galleries = {
+                home: document.getElementById('gallery-home'),
+                brands: document.getElementById('gallery-brands'),
+                shows: document.getElementById('gallery-shows'),
+                skincare: document.getElementById('gallery-skincare')
+            };
 
-            function saveData(data) {
-                localStorage.setItem('portfolio_data', JSON.stringify(data));
-            }
+            // Modals
+            const addImageModal = document.getElementById('addImageModal');
+            const settingsModal = document.getElementById('settingsModal');
+            const imageUrlInput = document.getElementById('imageUrlInput');
+            const imageFileInput = document.getElementById('imageFileInput');
+            let currentAddCategory = 'home';
 
-            let data = loadData();
-
-            function resetToDefaults() {
-                if (confirm('Удалить все изменения и вернуть стандартные настройки? Это необратимо.')) {
-                    data = JSON.parse(JSON.stringify(defaultData));
-                    saveData(data);
-                    applyAll();
-                    renderAdminProjects();
-                    populateAdminFields();
-                    closeAdmin();
-                }
-            }
-
-            // === APPLY THEME ===
-            function applyTheme(theme) {
-                const root = document.documentElement;
-                root.style.setProperty('--bg', theme.bg);
-                root.style.setProperty('--card-bg', theme.cardBg);
-                root.style.setProperty('--surface', theme.cardBg);
-                root.style.setProperty('--surface2', adjustColor(theme.cardBg, 10));
-                root.style.setProperty('--text', theme.text);
-                root.style.setProperty('--text2', adjustColor(theme.text, -40));
-                root.style.setProperty('--accent', theme.accent);
-                root.style.setProperty('--accent2', lightenColor(theme.accent, 25));
-                root.style.setProperty('--font-heading', theme.fontHeading);
-                root.style.setProperty('--card-border', adjustColor(theme.cardBg, 15));
-                root.style.setProperty('--nav-bg', theme.bg + 'd9');
-                // Update hero gradient dynamically
-                const heroBg = `linear-gradient(135deg, ${adjustColor(theme.bg,8)} 0%, ${adjustColor(theme.bg,4)} 50%, ${theme.bg} 100%)`;
-                root.style.setProperty('--hero-bg', heroBg);
-            }
-
-            function adjustColor(hex, amount) {
-                let r, g, b;
-                if (hex.startsWith('#')) {
-                    const num = parseInt(hex.slice(1), 16);
-                    r = (num >> 16) & 0xff;
-                    g = (num >> 8) & 0xff;
-                    b = num & 0xff;
-                } else { r = 26;
-                    g = 26;
-                    b = 37; }
-                r = Math.min(255, Math.max(0, r + amount));
-                g = Math.min(255, Math.max(0, g + amount));
-                b = Math.min(255, Math.max(0, b + amount));
-                return `rgb(${r},${g},${b})`;
-            }
-
-            function lightenColor(hex, percent) {
-                let r, g, b;
-                if (hex.startsWith('#')) {
-                    const num = parseInt(hex.slice(1), 16);
-                    r = (num >> 16) & 0xff;
-                    g = (num >> 8) & 0xff;
-                    b = num & 0xff;
-                } else { r = 108;
-                    g = 92;
-                    b = 231; }
-                r = Math.min(255, r + Math.round((255 - r) * percent / 100));
-                g = Math.min(255, g + Math.round((255 - g) * percent / 100));
-                b = Math.min(255, b + Math.round((255 - b) * percent / 100));
-                return `rgb(${r},${g},${b})`;
-            }
-
-            // === RENDER PROJECTS ===
-            function getCategories() {
-                const cats = new Set(data.projects.map(p => p.category));
-                return ['Все', ...Array.from(cats)];
-            }
-
-            let currentFilter = 'Все';
-
-            function renderProjects(filter = 'Все') {
-                currentFilter = filter;
-                const grid = document.getElementById('projectsGrid');
-                const filtered = filter === 'Все' ? data.projects : data.projects.filter(p => p.category ===
-                    filter);
-                grid.innerHTML = filtered.map(p => `
-                <div class="project-card" data-category="${p.category}">
-                    <img src="${p.image || 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop'}" alt="${p.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop'">
-                    <div class="card-body">
-                        <span class="card-tag">${p.category}</span>
-                        <h3>${p.title}</h3>
-                        <p>${p.description}</p>
-                        ${p.link ? `<a href="${p.link}" class="card-link" target="_blank">Подробнее →</a>` : ''}
-                    </div>
-                </div>
-            `).join('');
-
-                // Render filter bar
-                const filterBar = document.getElementById('filterBar');
-                const cats = getCategories();
-                filterBar.innerHTML = cats.map(c =>
-                    `<button class="filter-btn ${c === currentFilter ? 'active' : ''}" data-filter="${c}">${c}</button>`
-                ).join('');
-                // Attach listeners
-                filterBar.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        renderProjects(btn.dataset.filter);
-                    });
-                });
-            }
-
-            // === RENDER CONTACTS ===
-            function renderContacts() {
-                const c = data.contacts;
-                const list = document.getElementById('contactsList');
-                const items = [];
-                if (c.email) items.push(
-                    `<a href="mailto:${c.email}" target="_blank">📧 ${c.email}</a>`);
-                if (c.telegram) items.push(
-                    `<a href="https://t.me/${c.telegram.replace('@','')}" target="_blank">✈️ ${c.telegram}</a>`);
-                if (c.github) items.push(
-                    `<a href="https://${c.github}" target="_blank">🐙 ${c.github}</a>`);
-                list.innerHTML = items.join('') || '<span style="color:var(--text2)">Контакты не указаны</span>';
-            }
-
-            // === RENDER PROFILE ===
-            function renderProfile() {
-                const p = data.profile;
-                document.getElementById('heroName').textContent = p.name;
-                document.getElementById('heroTagline').textContent = p.tagline;
-                document.getElementById('heroBio').textContent = p.bio;
-                const avatar = document.getElementById('heroAvatar');
-                if (p.avatar && p.avatar.trim()) {
-                    avatar.src = p.avatar;
-                    avatar.onerror = () => { avatar.src =
-                            'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'130\' height=\'130\'%3E%3Crect fill=\'%232a2a3a\' width=\'130\' height=\'130\' rx=\'65\'/%3E%3Ctext fill=\'%23a0a0b8\' x=\'65\' y=\'72\' text-anchor=\'middle\' font-size=\'40\'%3E👤%3C/text%3E%3C/svg%3E'; };
-                } else {
-                    avatar.src =
-                        'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'130\' height=\'130\'%3E%3Crect fill=\'%232a2a3a\' width=\'130\' height=\'130\' rx=\'65\'/%3E%3Ctext fill=\'%23a0a0b8\' x=\'65\' y=\'72\' text-anchor=\'middle\' font-size=\'40\'%3E👤%3C/text%3E%3C/svg%3E';
-                }
-                document.getElementById('navLogo').textContent = p.siteName || 'Моё Портфолио';
-                document.getElementById('footerName').textContent = p.siteName || 'Моё Портфолио';
-                document.getElementById('footerYear').textContent = new Date().getFullYear();
-                document.title = (p.siteName || 'Портфолио') + ' — Редактируемый сайт';
-            }
-
-            // === ADMIN PANEL ===
-            function populateAdminFields() {
-                document.getElementById('colorBg').value = data.theme.bg;
-                document.getElementById('colorCardBg').value = data.theme.cardBg;
-                document.getElementById('colorText').value = data.theme.text;
-                document.getElementById('colorAccent').value = data.theme.accent;
-                document.getElementById('fontHeading').value = data.theme.fontHeading;
-                document.getElementById('adminName').value = data.profile.name;
-                document.getElementById('adminTagline').value = data.profile.tagline;
-                document.getElementById('adminBio').value = data.profile.bio;
-                document.getElementById('adminAvatar').value = data.profile.avatar || '';
-                document.getElementById('adminSiteName').value = data.profile.siteName || '';
-                document.getElementById('adminEmail').value = data.contacts.email;
-                document.getElementById('adminTelegram').value = data.contacts.telegram;
-                document.getElementById('adminGithub').value = data.contacts.github;
-                renderAdminProjects();
-            }
-
-            function renderAdminProjects() {
-                const container = document.getElementById('adminProjectsList');
-                container.innerHTML = data.projects.map((p, idx) => `
-                <div class="project-edit-item">
-                    <strong>${p.title || 'Без названия'}</strong> [${p.category}]
-                    <input type="text" value="${p.title}" placeholder="Название" data-idx="${idx}" data-field="title">
-                    <input type="text" value="${p.category}" placeholder="Категория" data-idx="${idx}" data-field="category">
-                    <textarea rows="2" placeholder="Описание" data-idx="${idx}" data-field="description">${p.description}</textarea>
-                    <input type="text" value="${p.image}" placeholder="URL изображения" data-idx="${idx}" data-field="image">
-                    <input type="text" value="${p.link}" placeholder="Ссылка (необязательно)" data-idx="${idx}" data-field="link">
-                    <div class="flex-row">
-                        <button class="btn-sm btn-save save-project-btn" data-idx="${idx}">💾 Сохранить</button>
-                        <button class="btn-sm btn-danger delete-project-btn" data-idx="${idx}">🗑 Удалить</button>
-                    </div>
-                </div>
-            `).join('');
-
-                // Attach save listeners
-                container.querySelectorAll('.save-project-btn').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const idx = parseInt(btn.dataset.idx);
-                        const item = container.querySelectorAll('.project-edit-item')[idx];
-                        const fields = item.querySelectorAll('[data-field]');
-                        fields.forEach(f => {
-                            data.projects[idx][f.dataset.field] = f.value;
-                        });
-                        saveData(data);
-                        applyAll();
-                        alert('Проект обновлён!');
-                    });
-                });
-                // Attach delete listeners
-                container.querySelectorAll('.delete-project-btn').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const idx = parseInt(btn.dataset.idx);
-                        if (confirm('Удалить проект "' + (data.projects[idx].title || '') + '"?')) {
-                            data.projects.splice(idx, 1);
-                            saveData(data);
-                            applyAll();
-                            renderAdminProjects();
-                        }
-                    });
-                });
-            }
-
-            function applyAll() {
-                applyTheme(data.theme);
-                renderProfile();
-                renderProjects(currentFilter);
-                renderContacts();
-            }
-
-            // Admin toggle
-            const adminPanel = document.getElementById('adminPanel');
-            const overlay = document.getElementById('overlay');
-            const btnToggle = document.getElementById('btnToggleAdmin');
-            const btnClose = document.getElementById('btnCloseAdmin');
-
-            function openAdmin() {
-                adminPanel.classList.add('open');
-                overlay.classList.add('show');
-                btnToggle.classList.add('active');
-                btnToggle.textContent = '✎ Редактор (открыт)';
-                populateAdminFields();
-            }
-
-            function closeAdmin() {
-                adminPanel.classList.remove('open');
-                overlay.classList.remove('show');
-                btnToggle.classList.remove('active');
-                btnToggle.textContent = '✎ Редактор';
-            }
-
-            btnToggle.addEventListener('click', () => {
-                if (adminPanel.classList.contains('open')) closeAdmin();
-                else openAdmin();
-            });
-            btnClose.addEventListener('click', closeAdmin);
-            overlay.addEventListener('click', closeAdmin);
-
-            // Save handlers
-            document.getElementById('btnApplyTheme').addEventListener('click', () => {
-                data.theme.bg = document.getElementById('colorBg').value;
-                data.theme.cardBg = document.getElementById('colorCardBg').value;
-                data.theme.text = document.getElementById('colorText').value;
-                data.theme.accent = document.getElementById('colorAccent').value;
-                data.theme.fontHeading = document.getElementById('fontHeading').value;
-                saveData(data);
-                applyAll();
-                alert('Тема применена!');
-            });
-            document.getElementById('btnResetTheme').addEventListener('click', () => {
-                data.theme = JSON.parse(JSON.stringify(defaultData.theme));
-                saveData(data);
-                applyAll();
-                populateAdminFields();
-            });
-            document.getElementById('btnSaveProfile').addEventListener('click', () => {
-                data.profile.name = document.getElementById('adminName').value;
-                data.profile.tagline = document.getElementById('adminTagline').value;
-                data.profile.bio = document.getElementById('adminBio').value;
-                data.profile.avatar = document.getElementById('adminAvatar').value;
-                data.profile.siteName = document.getElementById('adminSiteName').value;
-                saveData(data);
-                applyAll();
-                alert('Профиль сохранён!');
-            });
-            document.getElementById('btnSaveContacts').addEventListener('click', () => {
-                data.contacts.email = document.getElementById('adminEmail').value;
-                data.contacts.telegram = document.getElementById('adminTelegram').value;
-                data.contacts.github = document.getElementById('adminGithub').value;
-                saveData(data);
-                applyAll();
-                alert('Контакты сохранены!');
-            });
-            document.getElementById('btnAddProject').addEventListener('click', () => {
-                data.projects.push({
-                    id: Date.now(),
-                    title: 'Новый проект',
-                    category: 'Дизайн',
-                    description: 'Описание проекта',
-                    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop',
-                    link: '#'
-                });
-                saveData(data);
-                applyAll();
-                renderAdminProjects();
-                // scroll to bottom of admin projects
-                const list = document.getElementById('adminProjectsList');
-                list.scrollIntoView({ behavior: 'smooth' });
-            });
-            document.getElementById('btnResetAll').addEventListener('click', resetToDefaults);
-
-            // Close admin on Escape
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && adminPanel.classList.contains('open')) {
-                    closeAdmin();
-                }
-            });
-
-            // Initial apply
-            applyAll();
-            populateAdminFields();
-
-            // Handle smooth anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href === '#') return;
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        // Update active nav
-                        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove(
-                            'active'));
-                        this.classList.add('active');
+            // ----- INITIALIZE -----
+            function loadState() {
+                const stored = localStorage.getItem(STORAGE_KEY);
+                if (stored) {
+                    try {
+                        const parsed = JSON.parse(stored);
+                        state.name = parsed.name || 'YOUR NAME';
+                        state.accent = parsed.accent || '#dca8b4';
+                        state.bg = parsed.bg || '#ffffff';
+                        state.images = parsed.images || { home: [], brands: [], shows: [], skincare: [] };
+                    } catch (e) {
+                        console.warn('Could not parse stored data');
                     }
+                }
+                applySettings();
+                renderAllGalleries();
+                updateNameDisplay();
+            }
+
+            function saveState() {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+            }
+
+            function applySettings() {
+                document.documentElement.style.setProperty('--accent', state.accent);
+                document.documentElement.style.setProperty('--bg', state.bg);
+                document.documentElement.style.setProperty('--surface', state.bg);
+                // update accent soft (lighter version) – simple opacity approach
+                const softColor = state.accent + '1a'; // 10% opacity
+                document.documentElement.style.setProperty('--accent-soft', softColor);
+                document.body.style.backgroundColor = state.bg;
+            }
+
+            function updateNameDisplay() {
+                navBrand.textContent = state.name;
+                if (displayNameEl) displayNameEl.textContent = state.name;
+            }
+
+            // ----- RENDER GALLERIES -----
+            function renderGallery(category) {
+                const container = galleries[category];
+                if (!container) return;
+                container.innerHTML = '';
+                const images = state.images[category] || [];
+                images.forEach((img, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+                    item.innerHTML = `
+                        <img src="${img.url}" alt="portfolio image" loading="lazy">
+                        <button class="delete-btn" data-category="${category}" data-index="${index}">✕</button>
+                    `;
+                    container.appendChild(item);
+                });
+
+                // attach delete events
+                container.querySelectorAll('.delete-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const cat = btn.dataset.category;
+                        const idx = parseInt(btn.dataset.index, 10);
+                        deleteImage(cat, idx);
+                    });
+                });
+            }
+
+            function renderAllGalleries() {
+                Object.keys(galleries).forEach(cat => renderGallery(cat));
+            }
+
+            function deleteImage(category, index) {
+                state.images[category].splice(index, 1);
+                saveState();
+                renderGallery(category);
+            }
+
+            function addImageToCategory(category, url) {
+                if (!url || url.trim() === '') return;
+                state.images[category].push({ url: url.trim() });
+                saveState();
+                renderGallery(category);
+            }
+
+            // ----- PAGE NAVIGATION -----
+            function switchPage(pageId) {
+                Object.values(pages).forEach(p => p.classList.remove('active'));
+                if (pages[pageId]) pages[pageId].classList.add('active');
+                navTabs.forEach(tab => {
+                    const tabPage = tab.dataset.page;
+                    if (tabPage === pageId) tab.classList.add('active');
+                    else tab.classList.remove('active');
+                });
+            }
+
+            navTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    switchPage(tab.dataset.page);
                 });
             });
+            navBrand.addEventListener('click', () => switchPage('home'));
 
-            // Update active nav on scroll
-            window.addEventListener('scroll', () => {
-                const sections = document.querySelectorAll('section[id]');
-                let current = '';
-                sections.forEach(s => {
-                    const top = s.offsetTop - 100;
-                    if (window.scrollY >= top) current = s.getAttribute('id');
-                });
-                document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => {
-                    a.classList.remove('active');
-                    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
-                });
+            // ----- ADD IMAGE MODAL -----
+            function openAddModal(category) {
+                currentAddCategory = category;
+                imageUrlInput.value = '';
+                imageFileInput.value = '';
+                addImageModal.style.display = 'flex';
+            }
+            function closeAddModal() {
+                addImageModal.style.display = 'none';
+            }
+
+            document.getElementById('addHomeImage').addEventListener('click', () => openAddModal('home'));
+            document.getElementById('addBrandsImage').addEventListener('click', () => openAddModal('brands'));
+            document.getElementById('addShowsImage').addEventListener('click', () => openAddModal('shows'));
+            document.getElementById('addSkincareImage').addEventListener('click', () => openAddModal('skincare'));
+
+            document.getElementById('cancelAddImage').addEventListener('click', closeAddModal);
+            document.getElementById('confirmAddImage').addEventListener('click', () => {
+                const url = imageUrlInput.value.trim();
+                const file = imageFileInput.files[0];
+                if (url) {
+                    addImageToCategory(currentAddCategory, url);
+                    closeAddModal();
+                } else if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        addImageToCategory(currentAddCategory, e.target.result);
+                        closeAddModal();
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    alert('Please provide an image URL or select a file.');
+                }
             });
 
-            console.log('✅ Сайт-портфолио готов! Нажмите "Редактор" в меню, чтобы менять дизайн и наполнение.');
+            // Close modals on overlay click
+            window.addEventListener('click', (e) => {
+                if (e.target === addImageModal) closeAddModal();
+                if (e.target === settingsModal) closeSettingsModal();
+            });
+
+            // ----- SETTINGS MODAL -----
+            const settingsNameInput = document.getElementById('settingsName');
+            const accentColorContainer = document.getElementById('accentColors');
+            const bgOptionsContainer = document.getElementById('bgOptions');
+
+            function openSettingsModal() {
+                settingsNameInput.value = state.name;
+                // Highlight current accent
+                document.querySelectorAll('#accentColors .color-swatch').forEach(swatch => {
+                    if (swatch.dataset.color === state.accent) swatch.classList.add('selected');
+                    else swatch.classList.remove('selected');
+                });
+                // Highlight current bg
+                document.querySelectorAll('#bgOptions .bg-option').forEach(opt => {
+                    if (opt.dataset.bg === state.bg) opt.classList.add('selected');
+                    else opt.classList.remove('selected');
+                });
+                settingsModal.style.display = 'flex';
+            }
+            function closeSettingsModal() {
+                settingsModal.style.display = 'none';
+            }
+
+            document.getElementById('settingsBtn').addEventListener('click', openSettingsModal);
+            document.getElementById('cancelSettings').addEventListener('click', closeSettingsModal);
+            document.getElementById('saveSettings').addEventListener('click', () => {
+                state.name = settingsNameInput.value.trim() || 'YOUR NAME';
+                const selectedAccent = document.querySelector('#accentColors .color-swatch.selected');
+                if (selectedAccent) state.accent = selectedAccent.dataset.color;
+                const selectedBg = document.querySelector('#bgOptions .bg-option.selected');
+                if (selectedBg) state.bg = selectedBg.dataset.bg;
+                applySettings();
+                updateNameDisplay();
+                saveState();
+                closeSettingsModal();
+            });
+
+            // Accent color picker
+            accentColorContainer.addEventListener('click', (e) => {
+                const swatch = e.target.closest('.color-swatch');
+                if (!swatch) return;
+                document.querySelectorAll('#accentColors .color-swatch').forEach(s => s.classList.remove('selected'));
+                swatch.classList.add('selected');
+            });
+
+            // Background picker
+            bgOptionsContainer.addEventListener('click', (e) => {
+                const opt = e.target.closest('.bg-option');
+                if (!opt) return;
+                document.querySelectorAll('#bgOptions .bg-option').forEach(o => o.classList.remove('selected'));
+                opt.classList.add('selected');
+            });
+
+            // Reset all data
+            document.getElementById('resetAllData').addEventListener('click', () => {
+                if (confirm('Delete all images and reset name to default? This cannot be undone.')) {
+                    state = {
+                        name: 'YOUR NAME',
+                        accent: '#dca8b4',
+                        bg: '#ffffff',
+                        images: { home: [], brands: [], shows: [], skincare: [] }
+                    };
+                    applySettings();
+                    updateNameDisplay();
+                    renderAllGalleries();
+                    saveState();
+                    closeSettingsModal();
+                }
+            });
+
+            // Start
+            loadState();
         })();
     </script>
 </body>
