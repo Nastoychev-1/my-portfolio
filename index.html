@@ -3,233 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | High Fashion</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #ffffff;
             --surface: #ffffff;
-            --text: #2c2c2c;
+            --text: #1e1e1e;
             --text-secondary: #7a7a7a;
             --accent: #dca8b4;
-            --accent-soft: #f2e5e9;
-            --border: #e5e5e5;
-            --radius: 2px;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            --accent-soft: rgba(220, 168, 180, 0.12);
+            --border: #e8e8e8;
+            --name-font: 'Inter', sans-serif;
+            --name-size: 4.5rem;
+            --radius: 4px;
+            --card-shadow: 0 8px 30px rgba(0,0,0,0.04);
+            --nav-bg: rgba(255,255,255,0.88);
+            --grid-cols: 3;
             --font-serif: 'Playfair Display', Georgia, serif;
-            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: 0.3s ease;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: var(--font-sans);
-            background-color: var(--bg);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
             color: var(--text);
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
-            transition: background-color 0.4s, color 0.4s;
+            transition: background 0.4s, color 0.3s;
             letter-spacing: 0.02em;
         }
 
-        /* Navigation – minimal, high fashion */
         nav {
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
             padding: 0 2.5rem;
             height: 72px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transition: all 0.4s;
+            transition: background 0.4s;
         }
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 2.5rem;
-        }
+        .nav-left { display: flex; align-items: center; gap: 2.5rem; }
         .nav-name {
-            font-family: var(--font-serif);
-            font-style: italic;
+            font-family: var(--name-font);
             font-weight: 500;
-            font-size: 1.5rem;
-            letter-spacing: 0.04em;
+            font-size: 1.4rem;
+            letter-spacing: 0.02em;
             color: var(--text);
             cursor: pointer;
-            transition: color var(--transition);
+            transition: color 0.3s;
             white-space: nowrap;
+            text-transform: none;
+            font-style: normal;
         }
-        .nav-name:hover {
-            color: var(--accent);
-        }
-        .nav-links {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
+        .nav-name:hover { color: var(--accent); }
+        .nav-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
         .nav-links button {
-            background: transparent;
-            border: none;
-            padding: 0.5rem 1.2rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            color: var(--text-secondary);
-            transition: all var(--transition);
-            border-bottom: 2px solid transparent;
-            white-space: nowrap;
-            font-family: var(--font-sans);
-        }
-        .nav-links button:hover {
-            color: var(--text);
-            border-bottom-color: var(--accent);
-        }
-        .nav-links button.active {
-            color: var(--text);
-            border-bottom-color: var(--accent);
-            font-weight: 600;
-        }
-        .settings-icon {
             background: none;
             border: none;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
             cursor: pointer;
             color: var(--text-secondary);
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: all var(--transition);
+            border-bottom: 2px solid transparent;
+            transition: all 0.25s;
+            white-space: nowrap;
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-links button:hover { color: var(--text); border-bottom-color: var(--accent); }
+        .nav-links button.active { color: var(--text); border-bottom-color: var(--accent); font-weight: 600; }
+
+        .settings-btn {
+            background: none;
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            color: var(--text-secondary);
             display: flex;
             align-items: center;
+            gap: 0.4rem;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
         }
-        .settings-icon:hover {
-            color: var(--accent);
-            background: var(--accent-soft);
-        }
+        .settings-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
 
-        /* Main content */
         main {
             max-width: 1400px;
             margin: 0 auto;
             padding: 2rem 2.5rem 4rem;
-            animation: fade 0.5s ease;
+            animation: fadeContent 0.5s ease;
         }
-        @keyframes fade {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .page {
-            display: none;
-        }
-        .page.active {
-            display: block;
-        }
+        @keyframes fadeContent { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        .page { display: none; }
+        .page.active { display: block; }
 
-        /* Home page – signature name + gallery */
-        .home-signature {
+        .home-header {
             text-align: center;
             margin-bottom: 3rem;
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 0.8rem;
         }
-        .home-signature h1 {
-            font-family: var(--font-serif);
-            font-style: italic;
-            font-weight: 400;
-            font-size: clamp(3.5rem, 8vw, 6rem);
+        .avatar-container {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: var(--border);
+            margin-bottom: 0.2rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+            display: var(--avatar-display, block);
+        }
+        .avatar-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .home-header h1 {
+            font-family: var(--name-font);
+            font-weight: 500;
+            font-size: var(--name-size);
             letter-spacing: -0.02em;
             color: var(--text);
-            line-height: 1.1;
-            margin-bottom: 0.3rem;
-            transition: color 0.4s;
+            text-transform: none;
+            font-style: normal;
         }
-        .home-signature .sub {
-            font-size: 0.9rem;
+        .home-sub {
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.35em;
             color: var(--text-secondary);
-            font-weight: 400;
             border-top: 1px solid var(--border);
-            padding-top: 0.8rem;
-            margin-top: 0.8rem;
+            padding-top: 0.7rem;
+            font-family: 'Inter', sans-serif;
         }
 
-        /* Gallery grid – minimalist masonry style */
+        /* Gallery */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 1.5rem;
         }
         .gallery-item {
-            position: relative;
+            display: flex;
+            flex-direction: column;
             border-radius: var(--radius);
-            overflow: hidden;
-            aspect-ratio: 3/4;
-            background: #f9f9f9;
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
-            background: var(--surface);
+            background: #fafafa;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.35s, box-shadow 0.35s;
             border: 1px solid var(--border);
+            overflow: hidden;
         }
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(0,0,0,0.08); }
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            overflow: hidden;
         }
-        .gallery-item img {
+        .image-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.4s ease;
+            transition: transform 0.4s;
         }
-        .gallery-item:hover img {
-            transform: scale(1.03);
-        }
+        .gallery-item:hover .image-wrapper img { transform: scale(1.03); }
         .delete-btn {
             position: absolute;
             top: 10px;
             right: 10px;
-            background: rgba(44, 44, 44, 0.7);
+            background: rgba(30,30,30,0.7);
             backdrop-filter: blur(6px);
             color: #fff;
             border: none;
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: opacity 0.25s, background 0.2s;
+            transition: opacity 0.25s;
+            font-size: 0.9rem;
             z-index: 5;
-            line-height: 1;
-            font-weight: 300;
         }
-        .gallery-item:hover .delete-btn {
-            opacity: 1;
-        }
-        .delete-btn:hover {
-            background: #b56576;
+        .gallery-item:hover .delete-btn { opacity: 1; }
+        .delete-btn:hover { background: #c98b9b; }
+
+        .caption {
+            padding: 0.6rem 0.8rem;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            background: white;
+            border-top: 1px solid var(--border);
+            word-break: break-word;
+            letter-spacing: 0.02em;
         }
 
         .add-card {
@@ -241,216 +225,103 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all var(--transition);
-            background: transparent;
             color: var(--text-secondary);
             gap: 0.4rem;
-            font-weight: 400;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             font-size: 0.8rem;
-            min-height: 220px;
+            transition: all 0.3s;
+            min-height: 200px;
+            background: transparent;
         }
-        .add-card:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: rgba(220, 168, 180, 0.04);
-        }
-        .add-card .plus {
-            font-size: 2.8rem;
-            font-weight: 200;
-            line-height: 1;
-        }
+        .add-card:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+        .add-card .plus { font-size: 2.5rem; font-weight: 200; }
 
-        /* Modal overlay */
+        /* Modals */
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(4px);
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(6px);
             z-index: 200;
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: fadeOverlay 0.2s ease;
+            animation: fadeOverlay 0.2s;
         }
-        @keyframes fadeOverlay {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
+        @keyframes fadeOverlay { from { opacity: 0; } to { opacity: 1; } }
         .modal {
             background: var(--surface);
-            border-radius: 8px;
-            padding: 2.2rem;
+            border-radius: 12px;
+            padding: 2rem;
             width: 90%;
-            max-width: 480px;
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+            max-width: 540px;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.14);
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.2rem;
             border: 1px solid var(--border);
-            animation: modalSlide 0.3s ease;
+            animation: slideUp 0.3s;
+            max-height: 90vh;
+            overflow-y: auto;
         }
-        @keyframes modalSlide {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .modal h3 {
-            font-family: var(--font-serif);
-            font-weight: 500;
-            font-size: 1.6rem;
-            letter-spacing: 0.02em;
-            margin-bottom: -0.2rem;
-        }
-        .modal input[type="text"],
-        .modal input[type="file"] {
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .modal h3 { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 1.4rem; }
+        .modal label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); }
+        .modal input[type="text"], .modal textarea, .modal select, .modal input[type="file"] {
             width: 100%;
-            padding: 0.9rem 1rem;
+            padding: 0.7rem 0.9rem;
             border: 1px solid var(--border);
-            border-radius: 4px;
-            font-size: 0.95rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
             background: #fdfdfd;
             color: var(--text);
-            transition: border 0.2s;
-            font-family: var(--font-sans);
+            font-family: 'Inter', sans-serif;
         }
-        .modal input:focus {
-            outline: none;
-            border-color: var(--accent);
+        .modal textarea {
+            resize: vertical;
+            min-height: 60px;
         }
-        .modal .divider {
-            display: flex;
-            align-items: center;
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-        .modal .divider::before,
-        .modal .divider::after {
-            content: '';
-            flex: 1;
-            border-bottom: 1px solid var(--border);
-            margin: 0 0.7rem;
-        }
-        .btn-row {
-            display: flex;
-            gap: 0.8rem;
-            justify-content: flex-end;
-            flex-wrap: wrap;
-        }
+        .divider { display: flex; align-items: center; color: var(--text-secondary); font-size: 0.75rem; text-transform: uppercase; }
+        .divider::before, .divider::after { content: ''; flex: 1; border-bottom: 1px solid var(--border); margin: 0 0.6rem; }
+        .btn-row { display: flex; gap: 0.8rem; justify-content: flex-end; flex-wrap: wrap; }
         .btn {
-            padding: 0.7rem 1.6rem;
-            border-radius: 4px;
+            padding: 0.6rem 1.6rem;
+            border-radius: 30px;
             border: none;
             cursor: pointer;
             font-weight: 500;
-            font-size: 0.85rem;
-            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
             transition: all 0.25s;
-            font-family: var(--font-sans);
+            font-family: 'Inter', sans-serif;
         }
-        .btn-primary {
-            background: var(--accent);
-            color: #fff;
-        }
-        .btn-primary:hover {
-            background: #c98b9b;
-            box-shadow: 0 6px 16px rgba(220, 168, 180, 0.4);
-        }
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text);
-        }
-        .btn-secondary:hover {
-            background: #f5f5f5;
-        }
-        .btn-danger {
-            background: transparent;
-            border: 1px solid #c98b9b;
-            color: #b56576;
-        }
-        .btn-danger:hover {
-            background: #f9f0f2;
-        }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: #c98b9b; }
+        .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--text); }
+        .btn-secondary:hover { background: #f4f4f4; }
+        .btn-danger { background: transparent; border: 1px solid #d4a0ac; color: #b56576; }
+        .btn-danger:hover { background: #fdf2f4; }
 
-        /* Settings specific */
-        .color-options {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+        .setting-group { display: flex; flex-direction: column; gap: 0.4rem; }
+        .row { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
         .color-swatch {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.2s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+            border: 2px solid transparent; transition: 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-        .color-swatch.selected {
-            border-color: var(--text);
-            transform: scale(1.1);
+        .color-swatch.selected { border-color: var(--text); transform: scale(1.1); }
+        .option-btn {
+            padding: 0.4rem 1rem; border: 1px solid var(--border); border-radius: 20px;
+            cursor: pointer; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;
+            background: white;
         }
-        .bg-options {
-            display: flex;
-            gap: 0.8rem;
-        }
-        .bg-option {
-            padding: 0.5rem 1.2rem;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            background: #fff;
-        }
-        .bg-option.selected {
-            border-color: var(--accent);
-            background: var(--accent-soft);
-            font-weight: 600;
-        }
+        .option-btn.selected { border-color: var(--accent); background: var(--accent-soft); font-weight: 600; }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            nav {
-                padding: 0 1.2rem;
-                height: auto;
-                flex-wrap: wrap;
-                gap: 0.5rem;
-                padding-bottom: 0.8rem;
-            }
-            .nav-left {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-                width: 100%;
-            }
-            .nav-links {
-                width: 100%;
-                justify-content: flex-start;
-            }
-            main {
-                padding: 1.5rem 1.2rem;
-            }
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 1rem;
-            }
+            nav { padding: 0 1rem; height: auto; flex-wrap: wrap; gap: 0.4rem; padding-bottom: 0.6rem; }
+            .nav-left { flex-direction: column; align-items: flex-start; width: 100%; }
+            main { padding: 1.5rem 1rem; }
         }
     </style>
 </head>
@@ -465,63 +336,47 @@
                 <button class="nav-tab" data-page="skincare">Skin Care</button>
             </div>
         </div>
-        <button class="settings-icon" id="settingsBtn" title="Customize">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-            </svg>
+        <button class="settings-btn" id="openSettingsBtn">
+            <span>⚙</span> Customize
         </button>
     </nav>
 
     <main>
-        <!-- Home Page -->
         <div id="page-home" class="page active">
-            <div class="home-signature">
+            <div class="home-header">
+                <div class="avatar-container" id="homeAvatar">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f0f0f0'/%3E%3Ccircle cx='50' cy='40' r='16' fill='%23ccc'/%3E%3Cellipse cx='50' cy='75' rx='28' ry='18' fill='%23ccc'/%3E%3C/svg%3E" alt="avatar">
+                </div>
                 <h1 id="displayName">YOUR NAME</h1>
-                <div class="sub">PORTFOLIO · HIGH FASHION</div>
+                <div class="home-sub" id="homeSubtitle">PORTFOLIO</div>
             </div>
             <div class="gallery" id="gallery-home"></div>
-            <div class="add-card" id="addHomeImage">
-                <span class="plus">+</span>
-                <span>Add image</span>
-            </div>
+            <div class="add-card" data-category="home"><span class="plus">+</span> Add image</div>
         </div>
 
-        <!-- Brands Page -->
         <div id="page-brands" class="page">
             <div class="gallery" id="gallery-brands"></div>
-            <div class="add-card" id="addBrandsImage">
-                <span class="plus">+</span>
-                <span>Add image</span>
-            </div>
+            <div class="add-card" data-category="brands"><span class="plus">+</span> Add image</div>
         </div>
-
-        <!-- Shows Page -->
         <div id="page-shows" class="page">
             <div class="gallery" id="gallery-shows"></div>
-            <div class="add-card" id="addShowsImage">
-                <span class="plus">+</span>
-                <span>Add image</span>
-            </div>
+            <div class="add-card" data-category="shows"><span class="plus">+</span> Add image</div>
         </div>
-
-        <!-- Skin Care Page -->
         <div id="page-skincare" class="page">
             <div class="gallery" id="gallery-skincare"></div>
-            <div class="add-card" id="addSkincareImage">
-                <span class="plus">+</span>
-                <span>Add image</span>
-            </div>
+            <div class="add-card" data-category="skincare"><span class="plus">+</span> Add image</div>
         </div>
     </main>
 
     <!-- Add Image Modal -->
     <div class="modal-overlay" id="addImageModal" style="display: none;">
         <div class="modal">
-            <h3>Add Image</h3>
-            <input type="text" id="imageUrlInput" placeholder="Paste image URL (https://...)">
+            <h3>New Image</h3>
+            <input type="text" id="imageUrlInput" placeholder="Paste image URL">
             <div class="divider">or</div>
             <input type="file" id="imageFileInput" accept="image/*">
+            <label for="imageCaptionInput">Caption (brand, comment)</label>
+            <input type="text" id="imageCaptionInput" placeholder="e.g. Chanel, Spring 2025">
             <div class="btn-row">
                 <button class="btn btn-secondary" id="cancelAddImage">Cancel</button>
                 <button class="btn btn-primary" id="confirmAddImage">Add</button>
@@ -533,24 +388,98 @@
     <div class="modal-overlay" id="settingsModal" style="display: none;">
         <div class="modal">
             <h3>Customize</h3>
-            <label style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em;">Your Name</label>
-            <input type="text" id="settingsName" placeholder="Your name">
-            <label style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em;">Accent Color</label>
-            <div class="color-options" id="accentColors">
-                <div class="color-swatch" style="background:#dca8b4;" data-color="#dca8b4"></div>
-                <div class="color-swatch" style="background:#c49b9b;" data-color="#c49b9b"></div>
-                <div class="color-swatch" style="background:#d9c5b0;" data-color="#d9c5b0"></div>
-                <div class="color-swatch" style="background:#b0afaf;" data-color="#b0afaf"></div>
-                <div class="color-swatch" style="background:#e6b8c0;" data-color="#e6b8c0"></div>
+            <div class="setting-group">
+                <label>Your Name</label>
+                <input type="text" id="settingsName" placeholder="Your name">
             </div>
-            <label style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em;">Background</label>
-            <div class="bg-options" id="bgOptions">
-                <span class="bg-option selected" data-bg="#ffffff">White</span>
-                <span class="bg-option" data-bg="#f9f6f2">Beige</span>
+            <div class="setting-group">
+                <label>Home Subtitle</label>
+                <input type="text" id="settingsSubtitle" placeholder="PORTFOLIO">
             </div>
+            <div class="setting-group">
+                <label>Profile Photo</label>
+                <div class="row">
+                    <div class="avatar-preview" style="width:48px; height:48px; border-radius:50%; overflow:hidden; background:var(--border);">
+                        <img id="settingsAvatarPreview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f0f0f0'/%3E%3Ccircle cx='50' cy='40' r='16' fill='%23ccc'/%3E%3Cellipse cx='50' cy='75' rx='28' ry='18' fill='%23ccc'/%3E%3C/svg%3E" alt="preview">
+                    </div>
+                    <input type="file" id="avatarFileInput" accept="image/*" style="flex:1;">
+                </div>
+                <div class="row" style="margin-top:0.3rem;">
+                    <label style="font-weight:400; display:flex; align-items:center; gap:0.3rem;">
+                        <input type="checkbox" id="showAvatarCheckbox"> Show avatar on Home
+                    </label>
+                </div>
+            </div>
+            <!-- ... other settings unchanged ... -->
+            <div class="setting-group">
+                <label>Name Font</label>
+                <div class="row" id="nameFontOptions">
+                    <span class="option-btn" data-font="'Inter', sans-serif">Inter</span>
+                    <span class="option-btn" data-font="'Jost', sans-serif">Jost</span>
+                    <span class="option-btn" data-font="'Playfair Display', serif">Playfair</span>
+                </div>
+            </div>
+            <div class="setting-group">
+                <label>Name Size</label>
+                <div class="row" id="nameSizeOptions">
+                    <span class="option-btn" data-size="3.5rem">Small</span>
+                    <span class="option-btn" data-size="4.5rem">Medium</span>
+                    <span class="option-btn" data-size="6rem">Large</span>
+                </div>
+            </div>
+            <div class="setting-group">
+                <label>Accent Color</label>
+                <div class="row" id="accentColors">
+                    <span class="color-swatch" style="background:#dca8b4;" data-color="#dca8b4"></span>
+                    <span class="color-swatch" style="background:#c49b9b;" data-color="#c49b9b"></span>
+                    <span class="color-swatch" style="background:#d9c5b0;" data-color="#d9c5b0"></span>
+                    <span class="color-swatch" style="background:#b0afaf;" data-color="#b0afaf"></span>
+                    <span class="color-swatch" style="background:#e6b8c0;" data-color="#e6b8c0"></span>
+                </div>
+            </div>
+            <div class="setting-group">
+                <label>Background</label>
+                <div class="row" id="bgOptions">
+                    <span class="option-btn" data-bg="#ffffff">White</span>
+                    <span class="option-btn" data-bg="#f9f6f2">Beige</span>
+                    <span class="option-btn" data-bg="#f5f2ef">Warm Ivory</span>
+                </div>
+            </div>
+            <div class="setting-group">
+                <label>Card Radius</label>
+                <div class="row" id="radiusOptions">
+                    <span class="option-btn" data-radius="0px">Sharp</span>
+                    <span class="option-btn" data-radius="8px">Soft</span>
+                    <span class="option-btn" data-radius="16px">Round</span>
+                </div>
+            </div>
+            <div class="setting-group">
+                <label>Card Shadow</label>
+                <div class="row" id="shadowOptions">
+                    <span class="option-btn" data-shadow="none">None</span>
+                    <span class="option-btn" data-shadow="0 8px 30px rgba(0,0,0,0.04)">Subtle</span>
+                    <span class="option-btn" data-shadow="0 12px 40px rgba(0,0,0,0.12)">Strong</span>
+                </div>
+            </div>
+            <div class="setting-group">
+                <label>Navigation Background</label>
+                <div class="row" id="navBgOptions">
+                    <span class="option-btn" data-navbg="rgba(255,255,255,0.95)">Solid White</span>
+                    <span class="option-btn" data-navbg="rgba(255,255,255,0.7)">Transparent</span>
+                </div>
+            </div>
+            <div class="setting-group">
+                <label>Columns (desktop)</label>
+                <div class="row" id="gridColsOptions">
+                    <span class="option-btn" data-cols="2">2</span>
+                    <span class="option-btn" data-cols="3">3</span>
+                    <span class="option-btn" data-cols="4">4</span>
+                </div>
+            </div>
+
             <div class="btn-row" style="justify-content: space-between;">
                 <button class="btn btn-danger" id="resetAllData">Reset All</button>
-                <div>
+                <div style="display: flex; gap:0.5rem;">
                     <button class="btn btn-secondary" id="cancelSettings">Cancel</button>
                     <button class="btn btn-primary" id="saveSettings">Save</button>
                 </div>
@@ -560,23 +489,29 @@
 
     <script>
         (function() {
-            // ----- STATE -----
-            const STORAGE_KEY = 'fashionPortfolio';
-            let state = {
+            const STORAGE_KEY = 'portfolio_captions_v4';
+            const defaultState = {
                 name: 'YOUR NAME',
+                subtitle: 'PORTFOLIO',
+                avatar: '',
+                showAvatar: true,
+                nameFont: "'Inter', sans-serif",
+                nameSize: '4.5rem',
                 accent: '#dca8b4',
                 bg: '#ffffff',
-                images: {
-                    home: [],
-                    brands: [],
-                    shows: [],
-                    skincare: []
-                }
+                radius: '4px',
+                shadow: '0 8px 30px rgba(0,0,0,0.04)',
+                navBg: 'rgba(255,255,255,0.88)',
+                gridCols: '3',
+                images: { home: [], brands: [], shows: [], skincare: [] }
             };
 
-            // ----- DOM ELEMENTS -----
+            let state = JSON.parse(JSON.stringify(defaultState));
+
             const navBrand = document.getElementById('navBrandName');
             const displayNameEl = document.getElementById('displayName');
+            const homeSubtitleEl = document.getElementById('homeSubtitle');
+            const homeAvatar = document.getElementById('homeAvatar');
             const navTabs = document.querySelectorAll('.nav-tab');
             const pages = {
                 home: document.getElementById('page-home'),
@@ -591,225 +526,232 @@
                 skincare: document.getElementById('gallery-skincare')
             };
 
-            // Modals
             const addImageModal = document.getElementById('addImageModal');
             const settingsModal = document.getElementById('settingsModal');
-            const imageUrlInput = document.getElementById('imageUrlInput');
-            const imageFileInput = document.getElementById('imageFileInput');
-            let currentAddCategory = 'home';
+            let currentCategory = 'home';
 
-            // ----- INITIALIZE -----
             function loadState() {
-                const stored = localStorage.getItem(STORAGE_KEY);
-                if (stored) {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
                     try {
-                        const parsed = JSON.parse(stored);
-                        state.name = parsed.name || 'YOUR NAME';
-                        state.accent = parsed.accent || '#dca8b4';
-                        state.bg = parsed.bg || '#ffffff';
-                        state.images = parsed.images || { home: [], brands: [], shows: [], skincare: [] };
-                    } catch (e) {
-                        console.warn('Could not parse stored data');
-                    }
+                        const parsed = JSON.parse(saved);
+                        state = { ...defaultState, ...parsed };
+                        // Ensure images are objects with caption
+                        for (let cat in state.images) {
+                            state.images[cat] = state.images[cat].map(item => {
+                                if (typeof item === 'string') return { url: item, caption: '' };
+                                return { url: item.url || '', caption: item.caption || '' };
+                            });
+                        }
+                    } catch (e) { state = JSON.parse(JSON.stringify(defaultState)); }
                 }
-                applySettings();
-                renderAllGalleries();
-                updateNameDisplay();
+                applyAll();
+                renderAll();
             }
 
-            function saveState() {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-            }
+            function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 
-            function applySettings() {
+            function applyAll() {
                 document.documentElement.style.setProperty('--accent', state.accent);
+                document.documentElement.style.setProperty('--accent-soft', state.accent + '1a');
                 document.documentElement.style.setProperty('--bg', state.bg);
-                document.documentElement.style.setProperty('--surface', state.bg);
-                // update accent soft (lighter version) – simple opacity approach
-                const softColor = state.accent + '1a'; // 10% opacity
-                document.documentElement.style.setProperty('--accent-soft', softColor);
                 document.body.style.backgroundColor = state.bg;
-            }
-
-            function updateNameDisplay() {
+                document.documentElement.style.setProperty('--name-font', state.nameFont);
+                document.documentElement.style.setProperty('--name-size', state.nameSize);
+                document.documentElement.style.setProperty('--radius', state.radius);
+                document.documentElement.style.setProperty('--card-shadow', state.shadow);
+                document.documentElement.style.setProperty('--nav-bg', state.navBg);
+                document.documentElement.style.setProperty('--avatar-display', state.showAvatar ? 'block' : 'none');
+                let minWidth = '260px';
+                if (state.gridCols === '2') minWidth = '400px';
+                else if (state.gridCols === '4') minWidth = '220px';
+                document.querySelectorAll('.gallery').forEach(g => {
+                    g.style.gridTemplateColumns = `repeat(auto-fill, minmax(${minWidth}, 1fr))`;
+                });
                 navBrand.textContent = state.name;
-                if (displayNameEl) displayNameEl.textContent = state.name;
+                displayNameEl.textContent = state.name;
+                homeSubtitleEl.textContent = state.subtitle;
+                updateAvatarDisplay();
             }
 
-            // ----- RENDER GALLERIES -----
-            function renderGallery(category) {
-                const container = galleries[category];
+            function updateAvatarDisplay() {
+                const img = homeAvatar.querySelector('img');
+                if (state.avatar) img.src = state.avatar;
+                else img.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f0f0f0'/%3E%3Ccircle cx='50' cy='40' r='16' fill='%23ccc'/%3E%3Cellipse cx='50' cy='75' rx='28' ry='18' fill='%23ccc'/%3E%3C/svg%3E";
+                document.getElementById('settingsAvatarPreview').src = state.avatar || img.src;
+            }
+
+            function renderGallery(cat) {
+                const container = galleries[cat];
                 if (!container) return;
                 container.innerHTML = '';
-                const images = state.images[category] || [];
-                images.forEach((img, index) => {
-                    const item = document.createElement('div');
-                    item.className = 'gallery-item';
-                    item.innerHTML = `
-                        <img src="${img.url}" alt="portfolio image" loading="lazy">
-                        <button class="delete-btn" data-category="${category}" data-index="${index}">✕</button>
+                (state.images[cat] || []).forEach((item, idx) => {
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item';
+                    galleryItem.innerHTML = `
+                        <div class="image-wrapper">
+                            <img src="${item.url}" alt="work">
+                            <button class="delete-btn" data-cat="${cat}" data-idx="${idx}">✕</button>
+                        </div>
+                        ${item.caption ? `<div class="caption">${escapeHtml(item.caption)}</div>` : ''}
                     `;
-                    container.appendChild(item);
+                    container.appendChild(galleryItem);
                 });
-
-                // attach delete events
                 container.querySelectorAll('.delete-btn').forEach(btn => {
                     btn.addEventListener('click', (e) => {
                         e.stopPropagation();
-                        const cat = btn.dataset.category;
-                        const idx = parseInt(btn.dataset.index, 10);
-                        deleteImage(cat, idx);
+                        const cat = btn.dataset.cat;
+                        const idx = parseInt(btn.dataset.idx, 10);
+                        state.images[cat].splice(idx, 1);
+                        saveState();
+                        renderGallery(cat);
                     });
                 });
             }
 
-            function renderAllGalleries() {
-                Object.keys(galleries).forEach(cat => renderGallery(cat));
+            function escapeHtml(text) {
+                return String(text).replace(/[&<>"]/g, function(m) {
+                    if (m === '&') return '&amp;';
+                    if (m === '<') return '&lt;';
+                    if (m === '>') return '&gt;';
+                    if (m === '"') return '&quot;';
+                    return m;
+                });
             }
 
-            function deleteImage(category, index) {
-                state.images[category].splice(index, 1);
-                saveState();
-                renderGallery(category);
-            }
+            function renderAll() { Object.keys(galleries).forEach(cat => renderGallery(cat)); }
 
-            function addImageToCategory(category, url) {
-                if (!url || url.trim() === '') return;
-                state.images[category].push({ url: url.trim() });
-                saveState();
-                renderGallery(category);
-            }
-
-            // ----- PAGE NAVIGATION -----
-            function switchPage(pageId) {
+            function switchPage(id) {
                 Object.values(pages).forEach(p => p.classList.remove('active'));
-                if (pages[pageId]) pages[pageId].classList.add('active');
-                navTabs.forEach(tab => {
-                    const tabPage = tab.dataset.page;
-                    if (tabPage === pageId) tab.classList.add('active');
-                    else tab.classList.remove('active');
-                });
+                pages[id]?.classList.add('active');
+                navTabs.forEach(t => t.classList.toggle('active', t.dataset.page === id));
             }
-
-            navTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    switchPage(tab.dataset.page);
-                });
-            });
+            navTabs.forEach(t => t.addEventListener('click', () => switchPage(t.dataset.page)));
             navBrand.addEventListener('click', () => switchPage('home'));
 
-            // ----- ADD IMAGE MODAL -----
-            function openAddModal(category) {
-                currentAddCategory = category;
-                imageUrlInput.value = '';
-                imageFileInput.value = '';
-                addImageModal.style.display = 'flex';
-            }
-            function closeAddModal() {
-                addImageModal.style.display = 'none';
-            }
+            // Add image modal
+            const imageUrlInput = document.getElementById('imageUrlInput');
+            const imageFileInput = document.getElementById('imageFileInput');
+            const imageCaptionInput = document.getElementById('imageCaptionInput');
 
-            document.getElementById('addHomeImage').addEventListener('click', () => openAddModal('home'));
-            document.getElementById('addBrandsImage').addEventListener('click', () => openAddModal('brands'));
-            document.getElementById('addShowsImage').addEventListener('click', () => openAddModal('shows'));
-            document.getElementById('addSkincareImage').addEventListener('click', () => openAddModal('skincare'));
-
-            document.getElementById('cancelAddImage').addEventListener('click', closeAddModal);
+            document.querySelectorAll('.add-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    currentCategory = card.dataset.category;
+                    imageUrlInput.value = '';
+                    imageFileInput.value = '';
+                    imageCaptionInput.value = '';
+                    addImageModal.style.display = 'flex';
+                });
+            });
+            document.getElementById('cancelAddImage').addEventListener('click', () => addImageModal.style.display = 'none');
             document.getElementById('confirmAddImage').addEventListener('click', () => {
                 const url = imageUrlInput.value.trim();
                 const file = imageFileInput.files[0];
+                const caption = imageCaptionInput.value.trim();
+                const addItem = (imageUrl) => {
+                    state.images[currentCategory].push({ url: imageUrl, caption });
+                    saveState();
+                    renderGallery(currentCategory);
+                    addImageModal.style.display = 'none';
+                };
                 if (url) {
-                    addImageToCategory(currentAddCategory, url);
-                    closeAddModal();
+                    addItem(url);
                 } else if (file) {
                     const reader = new FileReader();
-                    reader.onload = (e) => {
-                        addImageToCategory(currentAddCategory, e.target.result);
-                        closeAddModal();
-                    };
+                    reader.onload = e => addItem(e.target.result);
                     reader.readAsDataURL(file);
                 } else {
                     alert('Please provide an image URL or select a file.');
                 }
             });
 
-            // Close modals on overlay click
-            window.addEventListener('click', (e) => {
-                if (e.target === addImageModal) closeAddModal();
-                if (e.target === settingsModal) closeSettingsModal();
-            });
+            // Settings modal (same as before with caption irrelevant)
+            const settingsName = document.getElementById('settingsName');
+            const settingsSubtitle = document.getElementById('settingsSubtitle');
+            const avatarFile = document.getElementById('avatarFileInput');
+            const showAvatarCheck = document.getElementById('showAvatarCheckbox');
 
-            // ----- SETTINGS MODAL -----
-            const settingsNameInput = document.getElementById('settingsName');
-            const accentColorContainer = document.getElementById('accentColors');
-            const bgOptionsContainer = document.getElementById('bgOptions');
+            function populateSettings() {
+                settingsName.value = state.name;
+                settingsSubtitle.value = state.subtitle;
+                showAvatarCheck.checked = state.showAvatar;
+                updateAvatarDisplay();
+                selectInGroup('nameFontOptions', state.nameFont);
+                selectInGroup('nameSizeOptions', state.nameSize);
+                selectInGroup('accentColors', state.accent);
+                selectInGroup('bgOptions', state.bg);
+                selectInGroup('radiusOptions', state.radius);
+                selectInGroup('shadowOptions', state.shadow);
+                selectInGroup('navBgOptions', state.navBg);
+                selectInGroup('gridColsOptions', state.gridCols);
+            }
 
-            function openSettingsModal() {
-                settingsNameInput.value = state.name;
-                // Highlight current accent
-                document.querySelectorAll('#accentColors .color-swatch').forEach(swatch => {
-                    if (swatch.dataset.color === state.accent) swatch.classList.add('selected');
-                    else swatch.classList.remove('selected');
+            function selectInGroup(groupId, value) {
+                document.querySelectorAll(`#${groupId} .option-btn, #${groupId} .color-swatch`).forEach(el => {
+                    const val = el.dataset.font || el.dataset.size || el.dataset.color || el.dataset.bg || el.dataset.radius || el.dataset.shadow || el.dataset.navbg || el.dataset.cols;
+                    el.classList.toggle('selected', val === value);
                 });
-                // Highlight current bg
-                document.querySelectorAll('#bgOptions .bg-option').forEach(opt => {
-                    if (opt.dataset.bg === state.bg) opt.classList.add('selected');
-                    else opt.classList.remove('selected');
-                });
+            }
+
+            document.getElementById('openSettingsBtn').addEventListener('click', () => {
+                populateSettings();
                 settingsModal.style.display = 'flex';
-            }
-            function closeSettingsModal() {
-                settingsModal.style.display = 'none';
-            }
-
-            document.getElementById('settingsBtn').addEventListener('click', openSettingsModal);
-            document.getElementById('cancelSettings').addEventListener('click', closeSettingsModal);
+            });
+            document.getElementById('cancelSettings').addEventListener('click', () => settingsModal.style.display = 'none');
             document.getElementById('saveSettings').addEventListener('click', () => {
-                state.name = settingsNameInput.value.trim() || 'YOUR NAME';
-                const selectedAccent = document.querySelector('#accentColors .color-swatch.selected');
-                if (selectedAccent) state.accent = selectedAccent.dataset.color;
-                const selectedBg = document.querySelector('#bgOptions .bg-option.selected');
-                if (selectedBg) state.bg = selectedBg.dataset.bg;
-                applySettings();
-                updateNameDisplay();
-                saveState();
-                closeSettingsModal();
-            });
+                state.name = settingsName.value.trim() || 'YOUR NAME';
+                state.subtitle = settingsSubtitle.value.trim() || 'PORTFOLIO';
+                state.showAvatar = showAvatarCheck.checked;
+                const nameFontSel = document.querySelector('#nameFontOptions .option-btn.selected');
+                if (nameFontSel) state.nameFont = nameFontSel.dataset.font;
+                const nameSizeSel = document.querySelector('#nameSizeOptions .option-btn.selected');
+                if (nameSizeSel) state.nameSize = nameSizeSel.dataset.size;
+                const accentSel = document.querySelector('#accentColors .color-swatch.selected');
+                if (accentSel) state.accent = accentSel.dataset.color;
+                const bgSel = document.querySelector('#bgOptions .option-btn.selected');
+                if (bgSel) state.bg = bgSel.dataset.bg;
+                const radiusSel = document.querySelector('#radiusOptions .option-btn.selected');
+                if (radiusSel) state.radius = radiusSel.dataset.radius;
+                const shadowSel = document.querySelector('#shadowOptions .option-btn.selected');
+                if (shadowSel) state.shadow = shadowSel.dataset.shadow;
+                const navBgSel = document.querySelector('#navBgOptions .option-btn.selected');
+                if (navBgSel) state.navBg = navBgSel.dataset.navbg;
+                const colsSel = document.querySelector('#gridColsOptions .option-btn.selected');
+                if (colsSel) state.gridCols = colsSel.dataset.cols;
 
-            // Accent color picker
-            accentColorContainer.addEventListener('click', (e) => {
-                const swatch = e.target.closest('.color-swatch');
-                if (!swatch) return;
-                document.querySelectorAll('#accentColors .color-swatch').forEach(s => s.classList.remove('selected'));
-                swatch.classList.add('selected');
-            });
-
-            // Background picker
-            bgOptionsContainer.addEventListener('click', (e) => {
-                const opt = e.target.closest('.bg-option');
-                if (!opt) return;
-                document.querySelectorAll('#bgOptions .bg-option').forEach(o => o.classList.remove('selected'));
-                opt.classList.add('selected');
-            });
-
-            // Reset all data
-            document.getElementById('resetAllData').addEventListener('click', () => {
-                if (confirm('Delete all images and reset name to default? This cannot be undone.')) {
-                    state = {
-                        name: 'YOUR NAME',
-                        accent: '#dca8b4',
-                        bg: '#ffffff',
-                        images: { home: [], brands: [], shows: [], skincare: [] }
+                if (avatarFile.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = e => {
+                        state.avatar = e.target.result;
+                        applyAll(); saveState(); settingsModal.style.display = 'none';
                     };
-                    applySettings();
-                    updateNameDisplay();
-                    renderAllGalleries();
-                    saveState();
-                    closeSettingsModal();
+                    reader.readAsDataURL(avatarFile.files[0]);
+                } else {
+                    applyAll(); saveState(); settingsModal.style.display = 'none';
                 }
             });
 
-            // Start
+            document.querySelectorAll('.option-btn, .color-swatch').forEach(el => {
+                el.addEventListener('click', function() {
+                    const parent = this.parentElement;
+                    parent.querySelectorAll('.option-btn, .color-swatch').forEach(s => s.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+
+            document.getElementById('resetAllData').addEventListener('click', () => {
+                if (confirm('Delete all content and reset settings?')) {
+                    state = JSON.parse(JSON.stringify(defaultState));
+                    applyAll(); renderAll(); saveState();
+                    settingsModal.style.display = 'none';
+                }
+            });
+
+            window.addEventListener('click', e => {
+                if (e.target === addImageModal) addImageModal.style.display = 'none';
+                if (e.target === settingsModal) settingsModal.style.display = 'none';
+            });
+
             loadState();
         })();
     </script>
